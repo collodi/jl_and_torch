@@ -10,12 +10,12 @@ Flux
 ```
 $ julia dense.jl
 data loaded
-epoch 0, mae 0.6247979
-epoch 100, mae 0.062492933
-epoch 200, mae 0.05447808
-epoch 300, mae 0.053329896
-epoch 400, mae 0.052486144
-epoch 500, mae 0.05169717
+epoch 0, mae 0.47796646
+epoch 100, mae 0.027874162
+epoch 200, mae 0.024698788
+epoch 300, mae 0.024611488
+epoch 400, mae 0.024609542
+epoch 500, mae 0.024608005
 ```
 
 PyTorch

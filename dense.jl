@@ -44,7 +44,7 @@ m = Flux.Chain(Flux.flatten,
 #			   ) |> gpu
 
 ps = Flux.params(m)
-opt = Flux.Optimise.Descent(1e-2)
+opt = Flux.Optimise.ADAM(1e-2)
 loss(x, y) = Flux.Losses.mse(m(x), y)
 
 function train_err()
