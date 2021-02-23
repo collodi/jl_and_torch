@@ -19,6 +19,11 @@ println("data loaded")
 
 tn_data = Flux.Data.DataLoader((tn_X, tn_Y), batchsize=1, shuffle=false)
 
+m = Flux.Chain(Flux.flatten,
+			   Dense(8, 4, relu),
+			   Dense(4, 1, sigmoid)
+			   ) |> gpu
+
 # weights from a successful pytorch run
 #w1 = [-0.0149  0.1073 -0.0076 -0.2996 -0.3232 -0.3424  0.0279 -0.1135;
 #	   0.2696  0.1876  0.2073  0.1008  0.0418  0.0079 -0.1303  0.2748;
@@ -37,11 +42,6 @@ tn_data = Flux.Data.DataLoader((tn_X, tn_Y), batchsize=1, shuffle=false)
 #					 initW = (a, b) -> w2,
 #					 initb = a -> b2)
 #			   ) |> gpu
-
-m = Flux.Chain(Flux.flatten,
-			   Dense(8, 4, relu),
-			   Dense(4, 1, sigmoid)
-			   ) |> gpu
 
 ps = Flux.params(m)
 opt = Flux.Optimise.Descent(1e-2)

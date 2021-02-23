@@ -4,6 +4,8 @@ Different behaviors on PyTorch vs. Juia Flux
 
 ---
 
+### Outputs
+
 Flux
 ```
 $ julia dense.jl
@@ -25,3 +27,15 @@ epoch 200, mae 0.000271
 epoch 300, mae 0.000006
 epoch 400, mae 0.000000
 ```
+
+---
+
+### Is it weight init?
+
+If you run the python code many times, you sometimes get errors that don't improve.
+From my testing, this comes from bad initialization.
+I've confirmed this by re-running the code with the same weight init values.
+
+I've suspected that this might be the case for Flux.
+However, copying a good weight init value from PyTorch to Flux does not improve errors.
+If you'd like to test this, uncomment the custom weight model in `dense.jl`.
