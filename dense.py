@@ -13,7 +13,7 @@ X = torch.stack(read_bods(data_dir))
 Y = torch.stack(read_caps(data_dir))
 
 dev = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-loader = DataLoader(list(zip(X, Y)), batch_size=1, shuffle=False)
+loader = DataLoader(list(zip(X, Y)), batch_size=5, shuffle=False)
 
 class Dense(nn.Module):
 	def __init__(self):
@@ -35,7 +35,7 @@ def train(m, dev, loader, opt):
 		x, y = x.to(dev), y.to(dev)
 
 		opt.zero_grad()
-		y_hat = m(x).view(-1)
+		y_hat = m(x)
 
 		loss = F.mse_loss(y_hat, y)
 		loss.backward()

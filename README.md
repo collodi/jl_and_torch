@@ -39,3 +39,11 @@ I've confirmed this by re-running the code with the same weight init values.
 I've suspected that this might be the case for Flux.
 However, copying a good weight init value from PyTorch to Flux does not improve errors.
 If you'd like to test this, uncomment the custom weight model in `dense.jl`.
+
+---
+
+### The Reason
+
+The reason for all this is because I'm passing two different size arrays to the loss functions.
+`m(x)` has the size `(1, 5)` and `y` has the size `(5,)`.
+This is not good because of the broadcasting inside the loss functions.
